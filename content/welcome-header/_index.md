@@ -12,4 +12,6 @@ list:
     - "cats"
     - "pokemon"
     - "reading"
+    - "planes"
+    - "cars"
 ---
