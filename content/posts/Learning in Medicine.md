@@ -2,7 +2,7 @@
 title: "First Do No Harm … Unless it's Your First Time"
 author: ["Sab"]
 date: 2025-12-31T15:17:00+11:00
-lastmod: 2026-01-01T20:20:17+11:00
+lastmod: 2026-01-01T21:19:07+11:00
 categories: ["Medicine"]
 draft: false
 tags: ["Medicine", "Ethics"]
@@ -66,7 +66,7 @@ The uncomfortable truth is that competency isn’t binary. You don't go to sleep
 
 To explain this, I’m going to borrow from Lev Vygotsky’s "Zone of Proximal Development," but because I'm a child, I will explain it using Pokémon.
 
-{{< figure src="https://gifdb.com/images/high/pokemon-charmander-in-the-rain-6oj2ddeliqbyi53t.gif" caption="<span class=\"figure-number\">Figure 1: </span>Charr" >}}
+{{< figure src="https://gifdb.com/images/high/pokemon-charmander-in-the-rain-6oj2ddeliqbyi53t.gif" caption="<span class=\"figure-number\">Figure 1: </span>Charr" width="700px" >}}
 
 Think of a medical student as a Charmander. Cute, full of potential, but if left alone to battle high level trainers on victory road (the Emergency Department), they will faint immediately. The Zone of Proximal Development is the battle they can win if they have a trainer using potions on them (a Consultant listening to their incomplete histories) and substituting them out for more experienced pokemon (a Registrar) when necessary.
 
