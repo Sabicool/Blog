@@ -30,7 +30,7 @@ We are left with the paradox of the healing apprentice: How do we teach medicine
 
 ## Patients as a Means and an End {#patients-as-a-means-and-an-end}
 
-Philosophy 101 tells us we shouldn't treat people merely as a means to an end. This becomes awkward when you realize medical education essentially views patients as very complex, breathing textbooks.
+Philosophy 101 tells us we shouldn't treat people merely as a means to an end. This becomes awkward when you realise medical education essentially views patients as very complex, breathing textbooks.
 
 There is a tension here. When a patient agrees to be a guinea pig, I feel a genuine enjoyment in my role as a bedside teacher. But is that enjoyment selfish? Doctors are often criticised for finding pathology "cool". We might call a rare disease "exciting" or "crazy", while to the patient it is "life altering".
 
