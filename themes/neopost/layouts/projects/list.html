@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div id="content">
+    <aside id="sidebar">
+        {{ partial "sidebar.html" . }}
+    </aside>
+    
+    <main>
+        <article class="projects-page artistic-page">
+            <div class="page-header">
+                <h1>{{ .Title }} 🛠️</h1>
+                <p>Things I've built, tinkered with, and probably over-engineered</p>
+            </div>
+            
+            <div class="projects-grid">
+                {{ range .Pages }}
+                <div class="project-card">
+                    {{ with .Params.image }}
+                    <div class="project-image">
+                        <img src="{{ . }}" alt="{{ $.Title }}">
+                    </div>
+                    {{ end }}
+                    <div class="project-content">
+                        <h2>{{ .Title }}</h2>
+                        <p>{{ .Summary }}</p>
+                        <div class="project-meta">
+                            {{ with .Params.tech }}
+                            <div class="tech-tags">
+                                {{ range . }}
+                                <span class="tech-tag">{{ . }}</span>
+                                {{ end }}
+                            </div>
+                            {{ end }}
+                            <a href="{{ .RelPermalink }}" class="read-more-btn">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </article>
+    </main>
+    
+    <aside id="right-sidebar">
+        {{ partial "right-sidebar.html" . }}
+    </aside>
+</div>
+{{ end }}

@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div id="content">
+    <aside id="sidebar">
+        {{ partial "sidebar.html" . }}
+    </aside>
+    
+    <main>
+        <article class="about-page artistic-page">
+            <div class="page-header">
+                <h1>{{ .Title }}</h1>
+                <div class="header-deco">
+                    <img src="/images/deco/star.gif" alt="" class="deco-float">
+                    <img src="/images/deco/sparkle.gif" alt="" class="deco-float">
+                </div>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <h2>👋 About Me</h2>
+                    <div class="card-content">
+                        {{ .Content }}
+                    </div>
+                </div>
+                
+                <div class="about-card accent">
+                    <h2>💖 Things I Love</h2>
+                    <ul class="love-list">
+                        <li>🩺 Medicine & Healthcare</li>
+                        <li>💻 Coding & Web Dev</li>
+                        <li>⚡ Pokémon</li>
+                        <li>📝 Organization Systems</li>
+                        <li>✨ Making things cute</li>
+                    </ul>
+                </div>
+                
+                <div class="about-card">
+                    <h2>🌟 This Blog</h2>
+                    <p>This is my personal corner of the internet where I share thoughts, projects, and experiments. Built with Hugo and styled with lots of love and nostalgia for the early web! 🌈</p>
+                </div>
+                
+                <div class="about-card full-width">
+                    <h2>📬 Get In Touch</h2>
+                    <div class="contact-buttons">
+                        <a href="mailto:your@email.com" class="contact-btn">✉️ Email</a>
+                        <a href="https://github.com/yourusername" class="contact-btn">💻 GitHub</a>
+                        <a href="/guestbook" class="contact-btn">📝 Guestbook</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <aside id="right-sidebar">
+        {{ partial "right-sidebar.html" . }}
+    </aside>
+</div>
+{{ end }}

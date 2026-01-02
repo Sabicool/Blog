@@ -37,6 +37,18 @@
     </script>
   </head>
 <body>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">🌸 {{ .Site.Title }}</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/gallery/">Gallery</a></li>
+        </ul>
+    </div>
+</nav>
+
         <header><h1 id="{{ .Site.Title }}"><a href="{{ absLangURL "/" }}">{{ .Site.Title }}</a></h1></header>
 <main>
     {{ block "main" . }}{{ end }}

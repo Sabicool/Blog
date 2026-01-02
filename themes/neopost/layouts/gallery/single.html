@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div id="content">
+    <aside id="sidebar">
+        {{ partial "sidebar.html" . }}
+    </aside>
+    
+    <main>
+        <article class="gallery-page artistic-page">
+            <div class="page-header">
+                <h1>{{ .Title }} 🖼️</h1>
+                <p>Visual moments and memories</p>
+            </div>
+            
+            <div class="gallery-grid">
+                {{ with .Params.images }}
+                {{ range . }}
+                <div class="gallery-item">
+                    <a href="{{ .url }}" target="_blank">
+                        <img src="{{ .url }}" alt="{{ .caption }}">
+                        <div class="gallery-overlay">
+                            <span class="gallery-caption">{{ .caption }}</span>
+                        </div>
+                    </a>
+                </div>
+                {{ end }}
+                {{ end }}
+            </div>
+        </article>
+    </main>
+    
+    <aside id="right-sidebar">
+        {{ partial "right-sidebar.html" . }}
+    </aside>
+</div>
+{{ end }}
