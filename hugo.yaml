@@ -1,5 +1,5 @@
 title: "Hewo Friends!!"
-baseURL: 'sabicoolblog.netlify.app/blog/'
+baseURL: 'https://sabicool.netlify.app/'
 titleCaseStyle: 'none' # comment this line for forcing capitalized titles on tags
 theme: "neopost"
 contentDir: content/
