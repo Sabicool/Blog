@@ -1,57 +1,91 @@
 {{ define "main" }}
 <div id="content">
     <aside id="sidebar">
-        {{ partial "sidebar.html" . }}
+        <div id="avatar">
+            {{ with .Site.GetPage "section" "/sidebar/_index.md" }}
+            <img class="flower" src="{{ index .Params "icon-path" }}">
+            {{ end }}
+        </div>
+        
+        <div id="bio">
+        {{ with .Site.GetPage "section" "/sidebar/bio.md" }}
+            {{ .Content | safeHTML }}
+        {{ end }}
+        </div>
+        
+        <div class="small-box">
+            {{ with .Site.GetPage "section" "/sidebar/basic-info.md" }}
+                {{ .Content | safeHTML }}
+            {{ end }}
+        </div>
+
+        <nav class="links">
+            <ul>
+            {{ with .Site.GetPage "section" "/sidebar/_index.md" }}
+            {{ range .Params.links }}
+                <li><a href="{{ .link }}">{{ .name }}</a></li>
+            {{ end }}
+            {{ end }}
+            </ul>
+        </nav>
     </aside>
     
     <main>
-        <article class="about-page artistic-page">
-            <div class="page-header">
-                <h1>{{ .Title }}</h1>
-                <div class="header-deco">
-                    <img src="/images/deco/star.gif" alt="" class="deco-float">
-                    <img src="/images/deco/sparkle.gif" alt="" class="deco-float">
+        <!-- Header matching other pages -->
+        <article id="top" class="clearfix">
+            <section>
+                <div style="text-align: center; padding: 2em 1em;">
+                    <h1>{{ .Title }}</h1>
                 </div>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-card">
-                    <h2>👋 About Me</h2>
-                    <div class="card-content">
-                        {{ .Content }}
-                    </div>
-                </div>
-                
-                <div class="about-card accent">
-                    <h2>💖 Things I Love</h2>
-                    <ul class="love-list">
-                        <li>🩺 Medicine & Healthcare</li>
-                        <li>💻 Coding & Web Dev</li>
-                        <li>⚡ Pokémon</li>
-                        <li>📝 Organization Systems</li>
-                        <li>✨ Making things cute</li>
-                    </ul>
-                </div>
-                
-                <div class="about-card">
-                    <h2>🌟 This Blog</h2>
-                    <p>This is my personal corner of the internet where I share thoughts, projects, and experiments. Built with Hugo and styled with lots of love and nostalgia for the early web! 🌈</p>
-                </div>
-                
-                <div class="about-card full-width">
-                    <h2>📬 Get In Touch</h2>
-                    <div class="contact-buttons">
-                        <a href="mailto:your@email.com" class="contact-btn">✉️ Email</a>
-                        <a href="https://github.com/yourusername" class="contact-btn">💻 GitHub</a>
-                        <a href="/guestbook" class="contact-btn">📝 Guestbook</a>
-                    </div>
-                </div>
+            </section>
+        </article>
+
+        <!-- About content -->
+        <article>
+            <div class="about-content">
+                {{ .Content }}
             </div>
         </article>
     </main>
     
     <aside id="right-sidebar">
-        {{ partial "right-sidebar.html" . }}
+        <div class="status-box">
+            {{ with .Site.GetPage "section" "/sidebar/currently.md" }}
+            <h3>Currently</h3>
+            <ul class="status-list">
+                <li>📖 reading: <span>{{ .Params.reading }}</span></li>
+                <li>🎵 listening: <span>{{ .Params.listening }}</span></li>
+                <li>🎮 playing: <span>{{ .Params.playing }}</span></li>
+                <li>💭 mood: <span>{{ .Params.mood }}</span></li>
+            </ul>
+            {{ end }}
+        </div>
+
+        <div class="pixel-pet">
+            <img src="/mew.gif" alt="pixel pet" id="pet">
+            <p class="pet-status">Mew is vibing!</p>
+        </div>
+
+        <div class="quote-box">
+            <h3>💭 Random Thought</h3>
+            <p id="random-quote"></p>
+            <button onclick="newQuote()">✨ New Quote</button>
+        </div>
     </aside>
 </div>
+
+<script>
+(function() {
+    const quotesJSON = '{{ with .Site.GetPage "section" "/sidebar/quotes.md" }}{{ .Params.quotes | jsonify }}{{ end }}';
+    const quotes = JSON.parse(quotesJSON);
+    
+    window.newQuote = function() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const quote = quotes[randomIndex];
+        document.getElementById('random-quote').textContent = quote;
+    }
+    
+    window.addEventListener('DOMContentLoaded', newQuote);
+})();
+</script>
 {{ end }}

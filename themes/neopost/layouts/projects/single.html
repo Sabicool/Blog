@@ -31,21 +31,20 @@
     </aside>
     
     <main>
-        <!-- Header section like the main page -->
-        <article id="top" class="clearfix">
-            <section>
-                <div style="text-align: center; padding: 2em 1em;">
-                    <h1>🛠️ Projects</h1>
-                    <p>Things I've built or tinkered with</p>
-                </div>
-            </section>
-        </article>
-
-        <!-- Projects in blog post style -->
-        {{ range .Pages }}
         <article>
-            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <h1>{{ .Title }}</h1>
             
+            <!-- Tags -->
+            {{ with .Params.tags }}
+            <div style="margin: 0.5em 0;">
+                tags:
+                {{ range $index, $tag := . }}
+                <a href="{{ relLangURL (printf "/tags/%s" $tag) }}">{{ $tag }}</a>{{ if ne $index (sub (len $) 1) }},{{ end }}
+                {{ end }}
+            </div>
+            {{ end }}
+            
+            <!-- Tech stack -->
             {{ with .Params.tech }}
             <div style="margin: 0.5em 0;">
                 {{ range . }}
@@ -64,16 +63,15 @@
             </div>
             {{ end }}
             
-            <p>{{ .Summary }}</p>
+            <div class="project-content">
+                {{ .Content }}
+            </div>
             
-            <a href="{{ .RelPermalink }}" style="display: inline-block; margin-top: 1em; padding: 0.5em 1.5em; background: var(--accent-color); color: white; text-decoration: none; border-radius: 20px; font-weight: bold;">Read More →</a>
+            <!-- Back to projects link -->
+            <div style="margin-top: 2em; padding-top: 1em; border-top: 2px dashed var(--border-color);">
+                <a href="/projects/" style="display: inline-block; padding: 0.5em 1.5em; background: var(--bg-color); border: 2px solid var(--accent-color); color: var(--text-color); text-decoration: none; border-radius: 20px; font-weight: bold;">← Back to Projects</a>
+            </div>
         </article>
-        {{ else }}
-        <article>
-            <h2>No projects yet!</h2>
-            <p>Check back soon for updates. ✨</p>
-        </article>
-        {{ end }}
     </main>
     
     <aside id="right-sidebar">

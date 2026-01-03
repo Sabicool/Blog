@@ -328,6 +328,8 @@ a:hover {
     margin-top: 1em;
     margin-right: 2em;
     border-radius: .5em;
+    max-width: 280px;
+    width: 280px;
 }
 
 .small-box {
@@ -735,20 +737,31 @@ header h1 a:hover {
     margin-bottom: .6em;
 }
 
+/* Fix post header and date positioning */
 .post-header {
     color: var(--special-text-color);
     font-weight: bold;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     border-bottom: 4px double var(--outline-color);
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .timestamp {
     font-weight: normal;
     font-size: smaller;
-    margin: .2em;
-    float: right;
+    margin: 0;
+    float: none;
 }
 
+/* For project pages - cleaner header */
+article .post-header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75em;
+    margin-bottom: 1em;
+}
 .tag-item p {
     font-size: smaller;
 }
@@ -868,10 +881,10 @@ header h1 a:hover {
 }
 
 /* ===== MAIN NAVIGATION STYLES ===== */
+/* Main Navigation Bar */
 .main-nav {
-    background: none;
-    border: none;
-    padding: 0.75em 0;
+    padding: 0;
+    z-index: 1000;
 }
 
 .nav-container {
@@ -880,29 +893,30 @@ header h1 a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1em;
+    padding: 0.75em 2em;
+    flex-wrap: wrap;
 }
 
 .nav-logo {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
-    color: var(--accent-color);
-    text-decoration: none;
+    color: var(--text-color);
     background: white;
     padding: 0.4em 0.8em;
     border-radius: 50px;
     border: 3px solid var(--accent-color);
     box-shadow: 0 4px 0 var(--accent-color),
                 0 6px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.5),
+                 -1px -1px 0 var(--accent-color);
     transition: all 0.3s;
-    white-space: nowrap;
-    flex-shrink: 0;
 }
 
 .nav-logo:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 var(--accent-color),
-                0 10px 20px rgba(0,0,0,0.15);
+    transform: scale(1.05) rotate(-2deg);
+    text-shadow: 3px 3px 0 rgba(255,255,255,0.5),
+                 -2px -2px 0 var(--accent-color);
 }
 
 .nav-links {
@@ -910,35 +924,105 @@ header h1 a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 0.5em;
+    gap: 0.75em;
     flex-wrap: wrap;
+}
+
+.nav-links li {
+    list-style: none;
 }
 
 .nav-links a {
     display: block;
-    padding: 0.6em 1.2em;
-    background: linear-gradient(135deg, #ff9ff3 0%, #feca57 100%);
-    color: white;
+    padding: 0.6em 1.5em;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
     text-decoration: none;
-    border: none;
-    border-radius: 50px;
+    border: 2px solid var(--accent-color);
+    border-radius: 25px;
     font-weight: bold;
     transition: all 0.3s;
-    box-shadow: 0 3px 0 rgba(0,0,0,0.15),
-                0 4px 10px rgba(0,0,0,0.1);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 0 var(--accent-color);
+    position: relative;
+    overflow: hidden;
     white-space: nowrap;
 }
 
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    transition: left 0.5s;
+}
+
+.nav-links a:hover::before {
+    left: 100%;
+}
+
 .nav-links a:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 5px 0 rgba(0,0,0,0.15),
-                0 8px 15px rgba(0,0,0,0.15);
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 var(--select-color);
 }
 
 .nav-links a:active {
-    transform: translateY(1px);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    transform: translateY(0);
+    box-shadow: 0 2px 0 var(--select-color);
+}
+
+/* Mobile navigation - flexible grid */
+@media only screen and (max-width: 800px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 0.75em;
+        padding: 1em;
+    }
+    
+    .nav-logo {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .nav-links {
+        justify-content: center;
+        gap: 0.5em;
+        width: 100%;
+        /* Allow 2 items per row on mobile */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        max-width: 400px;
+    }
+    
+    .nav-links li {
+        width: 100%;
+    }
+    
+    .nav-links a {
+        padding: 0.6em 1em;
+        font-size: 0.95em;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Very narrow mobile - single column */
+@media only screen and (max-width: 400px) {
+    .nav-links {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+}
+
+/* Medium width - adjust to 2 columns nicely */
+@media only screen and (min-width: 401px) and (max-width: 800px) {
+    .nav-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Add sparkle decoration */
@@ -954,38 +1038,8 @@ header h1 a:hover {
 }
 
 /* ===== MOBILE RESPONSIVE STYLES ===== */
+/* Mobile styles */
 @media only screen and (max-width: 800px) {
-    .main-nav {
-        padding: 0.5em 0;
-    }
-    
-    .nav-container {
-        flex-direction: column;
-        gap: 0.75em;
-        padding: 0.5em;
-    }
-    
-    .nav-logo {
-        font-size: 1.2em;
-        padding: 0.4em 0.8em;
-    }
-    
-    .nav-links {
-        width: 100%;
-        justify-content: center;
-        gap: 0.4em;
-    }
-    
-    .nav-links li {
-        flex: 0 1 auto;
-    }
-    
-    .nav-links a {
-        padding: 0.5em 0.9em;
-        font-size: 0.9em;
-    }
-    
-    /* Existing mobile styles for content */
     #content {
         flex-wrap: wrap;
         flex-direction: column;
@@ -995,63 +1049,91 @@ header h1 a:hover {
     main {
         order: 2;
         width: 100%;
+        padding: 0.5em;
     }
     
-    /* Move sidebar to bottom and make it full width */
+    /* Move sidebar to bottom and make it full width and centered */
     #sidebar {
         order: 3;
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
         margin: 0;
         margin-bottom: 1em;
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1em;
+        padding: 1em;
+        border-radius: .5em;
+    }
+    
+    /* Make avatar smaller and centered */
+    #avatar {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        order: 1;
+    }
+    
+    #avatar img {
+        max-width: 150px;
+        margin: 0 auto;
+    }
+    
+    /* Bio takes full width */
+    #bio {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        order: 2;
+        font-size: 0.9em;
+    }
+    
+    /* Small box centered */
+    .small-box {
+        max-width: 100%;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        order: 3;
+        font-size: 0.9em;
+    }
+    
+    /* Tags section */
+    #sidebar > div:has(.tags) {
+        width: 100%;
+        order: 4;
+    }
+    
+    /* Navigation links in sidebar */
+    #sidebar nav.links {
+        width: 100%;
+        order: 5;
+    }
+    
+    #sidebar nav.links > ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5em;
+        line-height: normal;
+    }
+    
+    #sidebar nav.links li {
+        margin: 0;
+        flex: 0 1 auto;
+    }
+    
+    #sidebar nav.links li > a {
+        padding: 0.5em 1em;
+        font-size: 0.9em;
     }
     
     /* Keep right sidebar hidden on mobile */
     #right-sidebar {
         display: none;
-    }
-    
-    /* Make avatar and bio stack nicely */
-    #avatar {
-display: none;
-    }
-    
-    #bio {
-        width: 100%;
-        margin: 1em 0;
-    }
-    
-    .small-box {
-        max-width: 100%;
-        margin: 1em 0;
-    }
-    
-    /* Make sidebar links stack vertically */
-    #sidebar ul {
-        line-height: 2em;
-        display: block;
-        width: 100%;
-    }
-    
-    #sidebar > .small-box li {
-        margin: .3em 0;
-        display: block;
-    }
-    
-    /* Adjust navigation links for mobile */
-    nav.links > ul {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        gap: 0.5em;
-    }
-    
-    nav.links li {
-        width: 100%;
-    }
-    
-    nav.links li > a {
-        display: block;
-        padding: .5em 1em;
     }
     
     header {
@@ -1297,88 +1379,115 @@ display: none;
     transform: translateX(5px);
 }
 
-/* Gallery Grid */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5em;
-    margin-top: 2em;
+/* Gallery Page Styles */
+/* Polaroid Pinboard - Pinterest/Masonry Style */
+.polaroid-pinboard {
+    column-count: 3;
+    column-gap: 1.5em;
+    padding: 1em 0;
 }
 
-.gallery-item {
+.polaroid {
+    break-inside: avoid;
+    margin-bottom: 1.5em;
+    display: inline-block;
+    width: 100%;
+}
+
+.polaroid a {
+    text-decoration: none;
+    display: block;
+}
+
+.polaroid-frame {
+    background: white;
+    padding: 12px;
+    padding-bottom: 45px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1),
+                0 6px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s;
     position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    border: 3px solid var(--accent-color);
-    aspect-ratio: 1;
+    transform: rotate(0deg);
+}
+
+/* Random slight rotations for authentic pinboard feel */
+.polaroid:nth-child(3n+1) .polaroid-frame {
+    transform: rotate(-2deg);
+}
+
+.polaroid:nth-child(3n+2) .polaroid-frame {
+    transform: rotate(1.5deg);
+}
+
+.polaroid:nth-child(3n+3) .polaroid-frame {
+    transform: rotate(-1deg);
+}
+
+.polaroid:hover .polaroid-frame {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15),
+                0 12px 40px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.polaroid-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
     background: var(--bg-color);
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-    border: none;
-    box-shadow: none;
-    transform: none;
-    border-radius: 0;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-.gallery-overlay {
+.polaroid-caption {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    padding: 1em;
-    transform: translateY(100%);
-    transition: transform 0.3s;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: #333;
+    padding: 0.5em;
 }
 
-.gallery-item:hover .gallery-overlay {
-    transform: translateY(0);
+/* Optional: Add tape effect */
+.polaroid-frame::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background: rgba(255, 255, 200, 0.6);
+    border: 1px solid rgba(200, 200, 150, 0.3);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.gallery-caption {
-    color: white;
-    font-weight: bold;
+/* Alternative tape positions for variety */
+.polaroid:nth-child(3n+1) .polaroid-frame::before {
+    top: -8px;
+    left: 20%;
+    transform: rotate(-15deg);
 }
 
-/* Mobile Responsive */
+.polaroid:nth-child(3n+2) .polaroid-frame::before {
+    top: -8px;
+    left: 70%;
+    transform: rotate(10deg);
+}
+
+/* Mobile: 2 columns */
 @media only screen and (max-width: 800px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .page-header h1 {
-        font-size: 1.8em;
-    }
-    
-    .page-header {
-        padding: 1.5em 1em;
-    }
-    
-    .header-deco {
-        display: none;
+    .polaroid-pinboard {
+        column-count: 2;
+        column-gap: 1em;
     }
 }
 
-@media only screen and (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
+/* Small mobile: 1 column */
+@media only screen and (max-width: 500px) {
+    .polaroid-pinboard {
+        column-count: 1;
     }
 }
 </style>

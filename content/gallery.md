@@ -1,0 +1,37 @@
+---
+title: "Gallery"
+type: "gallery"
+layout: "single"
+images:
+  - url: "/images/gallery/an124.jpg"
+    caption: "Antonov 124"
+  - url: "/images/gallery/beach.jpg"
+    caption: "Esperence, WA"
+  - url: "/images/gallery/bird1.jpg"
+    caption: "Lorikeet"
+  - url: "/images/gallery/rainbow.jpg"
+    caption: "Double Rainbow"
+  - url: "/images/gallery/cat.jpg"
+    caption: "Cat"
+  - url: "/images/gallery/clouds-at-sunset-plane.jpg"
+    caption: "Clouds"
+  - url: "/images/gallery/aurora.jpg"
+    caption: "Aurora"
+  - url: "/images/gallery/clouds-plane.jpg"
+    caption: "Clouds"
+  - url: "/images/gallery/landscape.jpg"
+    caption: "Mountains"
+  - url: "/images/gallery/scv12.jpg"
+    caption: "Essenza SCV12"
+  - url: "/images/gallery/sky.jpg"
+    caption: "Pastel Sky"
+  - url: "/images/gallery/stars.jpg"
+    caption: "Stars"
+  - url: "/images/gallery/stars.jpeg"
+    caption: "Stars"
+  - url: "/images/gallery/statue.jpg"
+    caption: "Statue"
+
+---
+
+A collection of things I thought looked nice (either things I found online or photos I've taken)!

@@ -1,35 +1,69 @@
 {{ define "main" }}
 <div id="content">
-    <aside id="sidebar">
-        {{ partial "sidebar.html" . }}
-    </aside>
-    
-    <main>
-        <article class="gallery-page artistic-page">
-            <div class="page-header">
-                <h1>{{ .Title }} 🖼️</h1>
-                <p>Visual moments and memories</p>
-            </div>
-            
-            <div class="gallery-grid">
-                {{ with .Params.images }}
-                {{ range . }}
-                <div class="gallery-item">
-                    <a href="{{ .url }}" target="_blank">
-                        <img src="{{ .url }}" alt="{{ .caption }}">
-                        <div class="gallery-overlay">
-                            <span class="gallery-caption">{{ .caption }}</span>
-                        </div>
-                    </a>
+    <main style="flex: 1; max-width: 900px; margin: 0 auto; padding: 1em;">
+        <!-- Header matching other pages -->
+        <article id="top" class="clearfix">
+            <section>
+                <div style="text-align: center; padding: 2em 1em;">
+                    <h1>📸️ {{ .Title }}</h1>
+                    <p>{{ .Content }}</p>
                 </div>
-                {{ end }}
-                {{ end }}
-            </div>
+            </section>
         </article>
+
+        <!-- Polaroid pinboard - no background box -->
+        <div class="polaroid-pinboard">
+            {{ range .Params.images }}
+            <div class="polaroid">
+                <a href="{{ .url }}" target="_blank">
+                    <div class="polaroid-frame">
+                        <img src="{{ .url }}" alt="{{ .caption }}" loading="lazy">
+                        <div class="polaroid-caption">{{ .caption }}</div>
+                    </div>
+                </a>
+            </div>
+            {{ end }}
+        </div>
     </main>
     
     <aside id="right-sidebar">
-        {{ partial "right-sidebar.html" . }}
+        <div class="status-box">
+            {{ with .Site.GetPage "section" "/sidebar/currently.md" }}
+            <h3>Currently</h3>
+            <ul class="status-list">
+                <li>📖 reading: <span>{{ .Params.reading }}</span></li>
+                <li>🎵 listening: <span>{{ .Params.listening }}</span></li>
+                <li>🎮 playing: <span>{{ .Params.playing }}</span></li>
+                <li>💭 mood: <span>{{ .Params.mood }}</span></li>
+            </ul>
+            {{ end }}
+        </div>
+
+        <div class="pixel-pet">
+            <img src="/mew.gif" alt="pixel pet" id="pet">
+            <p class="pet-status">Mew is vibing!</p>
+        </div>
+
+        <div class="quote-box">
+            <h3>💭 Random Thought</h3>
+            <p id="random-quote"></p>
+            <button onclick="newQuote()">✨ New Quote</button>
+        </div>
     </aside>
 </div>
+
+<script>
+(function() {
+    const quotesJSON = '{{ with .Site.GetPage "section" "/sidebar/quotes.md" }}{{ .Params.quotes | jsonify }}{{ end }}';
+    const quotes = JSON.parse(quotesJSON);
+    
+    window.newQuote = function() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const quote = quotes[randomIndex];
+        document.getElementById('random-quote').textContent = quote;
+    }
+    
+    window.addEventListener('DOMContentLoaded', newQuote);
+})();
+</script>
 {{ end }}
