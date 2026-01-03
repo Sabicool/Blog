@@ -6,7 +6,7 @@ images:
   - url: "/images/gallery/an124.jpg"
     caption: "Antonov 124"
   - url: "/images/gallery/beach.jpg"
-    caption: "Esperence, WA"
+    caption: "Albany, WA"
   - url: "/images/gallery/bird1.jpg"
     caption: "Lorikeet"
   - url: "/images/gallery/rainbow.jpg"
