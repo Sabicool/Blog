@@ -3,7 +3,6 @@ title: "Malleus Clinical Medicine"
 date: 2025-01-01
 type: "projects"
 tech: ["Medicine", "Python"]
-draft: true
 ---
 
 The first free peer-reviewed collaborative Anki deck for Australian and New Zealand medical students and junior doctors.
