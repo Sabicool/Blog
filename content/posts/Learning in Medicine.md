@@ -2,7 +2,7 @@
 title: "First Do No Harm … Unless it's Your First Time"
 author: ["Sab"]
 date: 2025-12-31T15:17:00+11:00
-lastmod: 2026-01-01T21:19:07+11:00
+lastmod: 2026-01-04T11:08:07+11:00
 categories: ["Medicine"]
 draft: false
 tags: ["Medicine", "Ethics"]
@@ -21,7 +21,7 @@ I had a few "difficult" cannulas I had been putting off—mostly because the pat
 
 There is something deeply unsettling about the phrase, "Is it okay if the medical student has a go?" It is usually whispered while a 20-year-old is advancing a needle toward your forearm with the intensity of someone defusing a bomb, despite having only learned bomb disposal from a WikiHow article.
 
-What we are really saying is: "Would you be willing to let this terrified youth, who has hitherto only practiced on plastic arms and oranges, pierce your tender flesh with a sharp object while I watch and silently pray I don’t have to intervene?"
+What we are really saying is: "Would you be willing to let this terrified youth, who has hitherto only practiced on plastic arms, pierce your tender flesh with a sharp object while I watch and silently pray I don’t have to intervene?"
 
 And yet, this remains the core paradox of our profession. At some point, every doctor—from your friendly local GP to the "giga chads" of cardiology who "wear the hides of vanquished foes" —had to perform a procedure for the very first time on a real, living, and hopefully consenting human. Medicine has a nasty habit of requiring experience for competence, meaning the only way to become safe is to start off distinctly unsafe.
 
