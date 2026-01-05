@@ -34,4 +34,4 @@ images:
 
 ---
 
-A collection of things I thought looked nice (either things I found online or photos I've taken)!
+A collection of photos of things I thought looked nice!
