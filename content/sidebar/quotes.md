@@ -6,4 +6,5 @@ quotes:
   - "Small, unnecessary projects bring the most joy."
   - "Every Pokémon is someone's favorite."
   - "The quietest acts are often the most meaningful."
+  - "Grief is the price we pay for love … it would be sad if it wasn't sad"
 ---
