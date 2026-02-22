@@ -7,4 +7,6 @@ quotes:
   - "Every Pokémon is someone's favorite."
   - "The quietest acts are often the most meaningful."
   - "Grief is the price we pay for love … it would be sad if it wasn't sad"
+  - "My profession is filled with exceptional individuals who do amazing, lifesaving work. Many of us are jerks. - Wen Shen (doctor)"
+
 ---
