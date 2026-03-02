@@ -8,5 +8,6 @@ quotes:
   - "The quietest acts are often the most meaningful."
   - "Grief is the price we pay for love … it would be sad if it wasn't sad"
   - "My profession is filled with exceptional individuals who do amazing, lifesaving work. Many of us are jerks. - Wen Shen (doctor)"
+  - "If you wait, will it get easier, or will you just be older?"
 
 ---
